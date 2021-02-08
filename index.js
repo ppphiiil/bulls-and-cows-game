@@ -56,7 +56,7 @@ function getHints(input, secret) {
         }
     }
 
-    console.log(restInputArr);
+    //console.log(restInputArr);
 
     //look for cows
     for (let i in inputArr) {
@@ -86,7 +86,10 @@ function checkInput(input, digitLength) {
         message = "Please, guess a number...";
     }
     if (input.length < digitLength && input.length > 0 && input != "exit") {
-        message = "less digits, 4 digits";
+        message = "less digits, 4 digits please";
+    }
+    if (!unique(input) && input != "exit") {
+        message = "please use unique digits...";
     }
     // if (input == "exit") {
     //     message = "";
@@ -131,7 +134,7 @@ function play() {
         //get input
         console.log("\n");
         do {
-            input = prompt('Guess a number with 4 digits: ');
+            input = prompt('Guess a number with 4 unique digits: ');
             error = checkInput(input, digitLength);
 
             if (error != "") {
@@ -141,6 +144,11 @@ function play() {
 
 
         let hints = getHints(input, secret);
+
+        if (hints.bulls == digitLength) {
+            console.log("WINNER !!!");
+            input = "exit";
+        }
         console.log(hints);
 
 
