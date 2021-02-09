@@ -1,6 +1,6 @@
 
 // Import package
-//const prompt = require('prompt-sync')({ sigint: true });
+const prompt = require('prompt-sync')({ sigint: true });
 
 function getSecretNumber(n = 4) {
     let random = 0;
@@ -33,23 +33,10 @@ function unique(number) {
 }
 //!console.log(checkUnique(0224)); works not with 0
 
-function getHints() {
+function getHints(input, secret) {
     let bullcounter = 0;
     let cowcounter = 0;
     let restInputArr = [];
-
-    //get input from textfield
-
-    input = document.getElementById("input").value;
-    //document.getElementById('log').innerHTML = input;
-
-    error = checkInput(input);
-    document.getElementById('error').innerHTML = error;
-
-    if (error != "") {
-        return
-    }
-
     //number to array
     let inputArr = [];
     inputArr = numberToArray(input);
@@ -66,8 +53,8 @@ function getHints() {
             bullcounter++;
         } else {
             restInputArr.push(inputArr[i]);
-        }
 
+        }
     }
 
     //console.log(restInputArr);
@@ -81,19 +68,12 @@ function getHints() {
     }
     restInputArr = [];
 
+    // console.log(`/TEST/ Bullcounter: ${bullcounter}`);
+    // console.log(`/TEST/ Cowcounter: ${cowcounter}`);
 
-    //add hints
-    let newestHint = `${parseInt(input)} , bulls: ${bullcounter} , cows: ${cowcounter}`;
-    addHints(newestHint);
-    // document.getElementById("hints").innerHTML = { input: parseInt(input), secret: secret, bulls: bullcounter, cows: cowcounter }.toString();
+    return { input: parseInt(input), secret: secret, bulls: bullcounter, cows: cowcounter };
 
 }
-function addHints(newestHint) {
-    var para = document.createElement("p");
-    para.innerHTML = newestHint;
-    document.getElementById("hints").appendChild(para);
-}
-
 
 function numberToArray(number) {
     let array = number.toString().split("");//stringify the number, then make each digit an item in an array
@@ -101,7 +81,7 @@ function numberToArray(number) {
 }
 
 
-function checkInput(input, digitLength = 4) {
+function checkInput(input, digitLength) {
     let message = "";
 
     if (input == "exit") {
@@ -123,46 +103,71 @@ function checkInput(input, digitLength = 4) {
                     if (input.length < digitLength) {
                         return "less digits, 4 digits please";
                     }
-    return message = "";
 }
 
 
-function getInput() {
-    input = document.getElementById('input').value;
-    document.getElementById('log').innerHTML = input;
-}
+function play() {
+    let input = 0;
+    let bulls = 0;
+    let cows = 0;
+    let secret = [];
+    let digitLength = 4;
+    let error = "";
 
-function startGame() {
-    playerName = prompt('Hi, whats your name? ');
 
 
     //welcome text
-    document.getElementById("welcome").innerHTML = `Hello ${playerName}... Let's play a game! `;
-    document.getElementById("info").innerHTML = "Try to guess the 4 digit numbers";
+    console.log("\n\n*****************************************************");
+    console.log("*****     HELLO PLAYER1! LET'S PLAY A GAME      *****");
+    console.log("*****     Try to guess the 4 digit numbers      *****");
+    console.log("*****                                           *****");
+    console.log("*****     to EXIT: write 'exit' and Enter       *****");
+    console.log("*****************************************************");
 
-    //get the secret Number
+
+
+    process.stdout.write("\nSecret Number:");
+    for (let index = 0; index < digitLength; index++) {
+        process.stdout.write("*");
+
+    }
+    process.stdout.write("Try to guess the number...\n");
+
     secret = getSecretNumber(digitLength);
 
-    //print secret number
-    document.getElementById('secret').innerHTML = `Secret Number: ****`;
 
-    //visible input
-    document.getElementById("input-form").style.visibility = "visible";
+    while (true) {
 
-    // document.getElementById("getHints").addEventListener("click", getHints);
+        //get input
+        console.log("\n");
+        do {
+            if (!error) {
+                input = prompt('Guess a number with 4 unique digits: ');
+            } else {
+                input = prompt(`${error}: `);
+            }
+
+            error = checkInput(input, digitLength);
+
+            if (input == "exit" || input == 'escape') {
+                process.exit();
+            }
+        } while (error);
 
 
+        let hints = getHints(input, secret);
+
+        if (hints.bulls == digitLength) {
+            console.log("WINNER !!!");
+            input = "exit";
+        }
+        console.log(hints);
 
 
+        // console.log(`/TEST/ secret number: \t${secret}`);
+        // console.log(`/TEST/ input number: \t${input}`);
 
-
-
+    }
 }
 
-let secret = [];
-let input = 0;
-let digitLength = 4;
-let bulls = 0;
-let cows = 0;
-let error = "";
-let playerName = "Player1";
+play();

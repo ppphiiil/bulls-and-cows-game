@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls and Cows</title>
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="src/css/main.min.css">
+</head>
+<body>
+    <!-- Start Button -->
+    <button type="text" onclick="startGame();">Start Game</button>
+    <!-- welcome Message -->
+    <h1 id="welcome"></h1>
+    <h2 id="info"></h2>
+    <!-- secret number -->
+    <p id="secret"></p>
+    <!-- print hints -->
+    <p id="hints"></p>
+    <!-- input -->
+    <div class="input-form">
+        <label for="input">Try to guess the number:</label>
+        <input type="text" name="input" id="input">
+        <button type="text" onclick="getHints();" id="getHints">getHint</button>
+    </div>
+    <p id="error"></p>
+    <p id="log"></p>
+</body>
+</html>
