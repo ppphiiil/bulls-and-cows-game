@@ -1,5 +1,6 @@
 
-
+// Import package
+const prompt = require('prompt-sync')({ sigint: true });
 
 function getSecretNumber(n = 4) {
     let random = 0;
@@ -79,23 +80,29 @@ function numberToArray(number) {
     return array.map(x => parseInt(x));//convert all the items back into numbers
 }
 
+
 function checkInput(input, digitLength) {
     let message = "";
 
-    if (input.length == 0) {
-        message = "Please, guess a number...";
-    }
-    if (input.length < digitLength && input.length > 0 && input != "exit") {
-        message = "less digits, 4 digits please";
-    }
-    if (!unique(input) && input != "exit") {
-        message = "please use unique digits...";
-    }
-    // if (input == "exit") {
-    //     message = "";
-    // }
+    if (input == "exit") {
+        return "It was nice to play with you ;) BYE BYE";
+    } else
 
-    return message;
+        if (!input.length) {
+            return "Please, guess a number";
+        } else
+
+            if (isNaN(parseInt(input))) {
+                return "Thats not a number ;) ";
+            } else
+
+                if (!unique(input)) {
+                    return "please use unique digits";
+                } else
+
+                    if (input.length < digitLength) {
+                        return "less digits, 4 digits please";
+                    }
 }
 
 
@@ -107,8 +114,7 @@ function play() {
     let digitLength = 4;
     let error = "";
 
-    // Import package
-    const prompt = require('prompt-sync')({ sigint: true });
+
 
     //welcome text
     console.log("\n\n*****************************************************");
@@ -130,17 +136,23 @@ function play() {
     secret = getSecretNumber(digitLength);
 
 
-    do {
+    while (true) {
+
         //get input
         console.log("\n");
         do {
-            input = prompt('Guess a number with 4 unique digits: ');
+            if (!error) {
+                input = prompt('Guess a number with 4 unique digits: ');
+            } else {
+                input = prompt(`${error}: `);
+            }
+
             error = checkInput(input, digitLength);
 
-            if (error != "") {
-                console.log(error);
-            };
-        } while (error != "");
+            if (input == "exit") {
+                process.exit();
+            }
+        } while (error);
 
 
         let hints = getHints(input, secret);
@@ -155,7 +167,7 @@ function play() {
         // console.log(`/TEST/ secret number: \t${secret}`);
         // console.log(`/TEST/ input number: \t${input}`);
 
-    } while (input != "exit");
+    }
 }
 
 play();
