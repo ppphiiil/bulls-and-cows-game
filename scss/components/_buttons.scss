@@ -1,0 +1,107 @@
+.button {
+    display: block;
+    //width: 200px;
+    padding: 0 20px;
+    height: 50px;
+    // margin: 60px auto;
+}
+
+.button {
+    display: block;
+
+    height: 50px;
+    background-color: #e7e7e7;
+
+    border-width: 0px;
+
+    color: #e7e7e7;
+    font-size: 1.2rem;
+    box-shadow: 4px 5px 15px -10px rgb(0, 0, 0), -4px -4px 8px 2px rgba(255, 255, 255, 0.432);
+    box-shadow: 8px 5px 10px -0px rgba(0, 0, 0, 0.09), -6px -0px 10px -1px rgba(255, 255, 255, 0.377),
+        inset 80px 0px 50px -100px rgba(0, 0, 0, 0.1), inset -20px 0px 50px -30px rgba(255, 255, 255, 0.315);
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.363); */
+    border-color: white;
+
+    border-radius: 10px;
+
+    font-family: "Roboto-Black", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    // color: #d3d3d3;
+    color: #e7e7e7;
+    letter-spacing: 0.3rem;
+    border-width: 0px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.563), -0px -2px 4px rgba(255, 255, 255, 0.644);
+
+    //  border-image-source: linear-gradient( to top left, grey, white);
+    //          border-image-slice: 1;
+    //      border-width: 1px;
+    //  border-left:10px groove green;
+}
+
+.button1 {
+    font-family: "Roboto-bold", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    // color: #d3d3d3;
+    color: rgb(243, 243, 243);
+    letter-spacing: 0.3rem;
+    border-width: 0px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.563), -0px -2px 4px rgba(255, 255, 255, 1);
+
+    background-color: inherit;
+
+    box-shadow: 0rem 0.8rem 2rem -0.5rem rgba(0, 0, 0, 0.3), -0rem -1rem 1rem -0.1rem rgba(255, 255, 255, 0.568),
+        inset 4rem 0rem 10rem -8rem rgba(112, 97, 97, 0.13), inset -4rem 0rem 10rem -8.8rem rgba(255, 255, 255, 0.135);
+
+    border-color: white;
+    border-radius: 0.5rem;
+
+    transition: transform 1s ease-in-out;
+    animation: move-in;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+
+    animation: move-in 2s ease-in;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.button-moving {
+    animation: up-and-down 1s ease-in-out alternate infinite;
+}
+
+.cta {
+    box-shadow: 1rem 1.5rem 1rem -0rem rgba(0, 0, 0, 0.2), -0rem -1rem 1rem -0.1rem rgba(255, 255, 255, 0.568),
+        inset 4rem 0rem 10rem -8rem rgba(112, 97, 97, 0.13), inset -4rem 0rem 10rem -8.8rem rgba(255, 255, 255, 0.135);
+
+    color: rgb(119, 76, 119);
+    color: #e7e7e7;
+}
+
+.button:hover {
+    transition: all 0.3s ease-in-out;
+
+    box-shadow: 1rem 1.5rem 1rem -0rem rgba(0, 0, 0, 0.2), -0rem -1rem 1rem -0.1rem rgba(255, 255, 255, 0.568),
+        inset 4rem 0rem 10rem -8rem rgba(112, 97, 97, 0.13), inset -4rem 0rem 10rem -8.8rem rgba(255, 255, 255, 0.135);
+
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.563), -0px -1px 2px rgba(255, 255, 255, 0.5);
+
+    transform: scale(1.1);
+}
+
+@keyframes move-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes up-and-down {
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}

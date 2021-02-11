@@ -1,0 +1,71 @@
+#game-section {
+    //display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    animation: move-in 2s ease-in;
+
+    #images {
+        img {
+            height: 100px;
+            filter: drop-shadow(10px 30px 7px rgba(122, 122, 122, 0.473));
+        }
+    }
+
+    #funny-images {
+        // position: absolute;
+        // height: auto;
+        // width: 250px;
+        // left: 9px;
+        // bottom: 100px;
+        transform: rotate(-10deg);
+        margin: 30px auto;
+
+        img {
+            height: 200px;
+            filter: drop-shadow(10px 30px 7px rgba(122, 122, 122, 0.473));
+        }
+    }
+
+    .results {
+        flex-grow: 1;
+        // height: 300px;
+        // overflow: scroll;
+        // overflow-x: hidden;
+        // ::-webkit-scrollbar-track {
+        //     background-color:#e7e7e7;}
+        // padding: 10px;
+    }
+
+    .layout {
+        display: flex;
+        flex-direction: row;
+
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        flex-shrink: 2;
+    }
+
+    #hint-input-bar {
+        // position: fixed;
+        // background-color:#e7e7e7;
+        // height: auto;
+        // width: 100%;
+        // left: 0px;
+        // bottom: 0px;
+        padding-bottom: 40px;
+    }
+
+    #secret {
+        // background-color: white;
+        color: rgb(82, 29, 82);
+    }
+}

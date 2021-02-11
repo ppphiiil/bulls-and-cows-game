@@ -1,0 +1,30 @@
+// ================================= GRID
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 10px;
+}
+
+.col {
+ background-color: bisque;
+}
+
+// ================================= DESKTOP FIRST
+
+@for $i from 1 through 12 {
+  .col-xl-#{$i} {
+    grid-column: span #{$i};
+  }
+}
+
+//This makes the @for abovee
+// .col-2{
+//     grid-column: span 2;
+// }
+
+// .col-3{
+//     grid-column: span 3;
+// }
+

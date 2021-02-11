@@ -1,7 +1,35 @@
-#error{
-    color:red;
-}
 
-.input-form{
-    visibility: hidden;
-}
+
+
+//=================================== BASICS STYLING
+@import 'scss/basic/colors';
+@import "scss/basic/typo";
+
+
+
+//=================================== COMPONENTS
+@import "scss/components/buttons";
+@import "scss/components/all";
+
+
+//=================================== SECTIONS
+@import "scss/sections/start-page";
+@import "scss/sections/game-page";
+@import "scss/sections/settings-page";
+
+
+//=================================== LAYOUT
+@import 'scss/layout/grid';
+@import 'scss/layout/margin';
+
+
+
+//=================================== UTILS
+@import "scss/utils/reset";
+@import "scss/utils/variables";
+
+
+
+
+//=================================== TESTING
+@import "scss/testing/test";
