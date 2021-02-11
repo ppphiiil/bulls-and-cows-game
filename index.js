@@ -402,7 +402,7 @@ let bulls = 0
 let cows = 0
 let error = ''
 let playerName = 'Player1'
-let testFlag = 1
+let testFlag = 0
 let hintsCounter = 0
 let motivationMessage = [
     'Come on, you can guess better ;)',
