@@ -36,6 +36,7 @@ function winner() {
     playCow();
     confetti.start(10000)
     winnerFlag = 1;
+    stopBackground();
 
 
     setTimeout(function () {
@@ -75,8 +76,9 @@ function askForAnotherGame() {
 
     if (confirm('Wanna play another Game?')) {
         newGame();
+        console.log("yes");
     } else {
-
+        console.log("no");
     }
 }
 
@@ -379,7 +381,7 @@ function newGame() {
     }
     //remove error text
     document
-        .getElementById('error').removeChild(document.getElementById('error').lastChild)
+        .getElementById('error').innerHTML = "";
     // 
     //     //delete game on screen
     //     document

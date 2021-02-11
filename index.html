@@ -34,10 +34,10 @@
             <p class="paragraph">Hi! Welcome to my first Game in JavaScript. Do you know the game Bulls & Cows? No? Then
                 you haven't missed anything. It's awefull </p>
             <form action="">
-                <div> <label for=" input">
+                <div> <label for="name">
                         <p class="label-text">Enter your name:</p>
                     </label>
-                    <input type="text" name="name" id="name">
+                    <input tabindex="1" type="text" name="name" id="name">
                 </div>
             </form>
             <button class="button ml-4 button-moving cta" type="text" onclick="startGame();">Start Game</button>
@@ -65,10 +65,10 @@
                 <div class="right">
                     <!-- input -->
                     <div class="mt-4" id="hint-input-bar">
-                        <div id="input-form"><label for=" input">
+                        <div id="input-form"><label for="input">
                                 <p class="label-text">Guess: </p>
                             </label>
-                            <input type="text" name="input" id="input">
+                            <input tabindex="1" type="text" name="input" id="input">
                             <button class="button button-moving cta" type="text" onclick="getHints();"
                                 id="getHints">Hint</button>
                         </div>
@@ -97,7 +97,7 @@
                 </div>
                 <!--  -->
                 <div><label for="sound">
-                        <p class="label-text">More Feeling on/off</p>
+                        <p class="label-text">More feeling on/off</p>
                     </label>
                     <input type="text" name="sound" id="sound">
                 </div>
