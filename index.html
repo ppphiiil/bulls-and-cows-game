@@ -5,25 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulls and Cows</title>
     <script defer src="index.js"></script>
+    <script defer src="confetti.js"></script>
     <link rel="stylesheet" href="src/css/main.min.css">
 </head>
 <body>
-    <!-- Start Button -->
-    <button type="text" onclick="startGame();">Start Game</button>
-    <!-- welcome Message -->
-    <h1 id="welcome"></h1>
-    <h2 id="info"></h2>
-    <!-- secret number -->
-    <p id="secret"></p>
-    <!-- print hints -->
-    <p id="hints"></p>
-    <!-- input -->
-    <div class="input-form">
-        <label for="input">Try to guess the number:</label>
-        <input type="text" name="input" id="input">
-        <button type="text" onclick="getHints();" id="getHints">getHint</button>
-    </div>
-    <p id="error"></p>
-    <p id="log"></p>
+    <main>
+        <!-- ===================  -->
+        <!-- Start Section START  -->
+        <!-- ===================  -->
+        <nav class="nav">
+            <button class="button" onclick="newGame();">New Game</button>
+            <div>
+                <button class="button " onclick="showSettings();">Settings</button>
+                <button class="button ml-2">Stats</button>
+                <button class="button ml-2">Help</button>
+            </div>
+        </nav>
+        <section id="start-section">
+            <h1>BULLS AND COWS</h1>
+            <p class="paragraph">Hi! Welcome to my first Game in JavaScript. Do you know the game Bulls & Cows? No? Then
+                you haven't missed anything. It's awefull </p>
+            <form action="">
+                <label for=" input">
+                    <p class="label-text">Enter your name:</p>
+                </label>
+                <input type="text" name="name" id="name">
+            </form>
+            <button class="button ml-4 button-moving cta" type="text" onclick="startGame();">Start Game</button>
+        </section>
+        <!-- ===================  -->
+        <!-- Start Section ENDS  -->
+        <!-- ===================  -->
+        <!--                      -->
+        <!--                      -->
+        <!-- ===================  -->
+        <!-- Game Section STARTS  -->
+        <!-- ===================  -->
+        <section id="game-section">
+            <!-- welcome Message -->
+            <h1 id="welcome"></h1>
+            <h2 id="info"></h2>
+            <!-- secret number -->
+            <p id="secret"></p>
+            <!-- print hints -->
+            <div class="layout mt-4">
+                <div class="results">
+                    <p id="hints"></p>
+                    <div id="images"></div>
+                </div>
+                <div class="right">
+                    <!-- input -->
+                    <div class="mt-4" id="hint-input-bar">
+                        <div id="input-form"><label for=" input">
+                                <p class="label-text">Guess: </p>
+                            </label>
+                            <input type="text" name="input" id="input">
+                            <button class="button button-moving cta" type="text" onclick="getHints();"
+                                id="getHints">Hint</button>
+                        </div>
+                    </div>
+                    <p id="error"></p>
+                    <div id="funny-images"></div>
+                </div>
+            </div>
+            <!-- <span id="log"></span> -->
+        </section>
+        <!-- ===================  -->
+        <!-- Game Section ENDS  -->
+        <!-- ===================  -->
+        <!--                      -->
+        <!--                      -->
+        <!-- ===================  -->
+        <!-- Settings Section STARTS  -->
+        <!-- ===================  -->
+        <section id="settings-section">
+            <h1>Settings</h1>
+            <form class="form" action="">
+                <label for="testFlag">
+                    <p class="label-text">Test mode</p>
+                </label>
+                <input type="text" name="testFlag" id="testFlag">
+            </form>
+            <button class="button cta mt-4" onclick="saveSettings();">Go back</button>
+        </section>
+        <p id="log"></p>
+    </main>
 </body>
 </html>
