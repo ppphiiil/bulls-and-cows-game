@@ -34,13 +34,21 @@ function winner() {
     ).innerHTML = `Yea! ${playerName} you win this game !!!`
     document.getElementById('hints').style.color = '#ff0000'
     confetti.start(10000)
+    winnerFlag = 1;
 }
 
 function getHints() {
+
+    //dont give hints if winnerflag 
+    if (winnerFlag) {
+        return
+    }
+
     //reset
     let bullcounter = 0
     let cowcounter = 0
     let restInputArr = []
+
     //if there is a element inside, than remove it
     if (document.getElementById('funny-images').lastChild) {
         document
@@ -258,6 +266,7 @@ function newGame() {
 
     //reset input
     document.getElementById('input').value = ''
+    winnerFlag = 0;
 
     //start new
     startGame()
@@ -279,6 +288,7 @@ let motivationMessage = [
     'Maybe, you try again',
     'No cow and no bull. haha!',
 ]
+let winnerFlag = 0;
 
 
 //hide start-section
