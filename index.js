@@ -33,8 +33,60 @@ function winner() {
         'welcome',
     ).innerHTML = `Yea! ${playerName} you win this game !!!`
     document.getElementById('hints').style.color = '#ff0000'
+    playCow();
     confetti.start(10000)
     winnerFlag = 1;
+
+
+    setTimeout(function () {
+        //code to be executed after x second
+        askForAnotherGame();
+        createNewGame();
+    }, 4000);
+
+
+}
+
+
+
+
+function createNewGame() {
+
+
+}
+
+
+function playCow() {
+    audio.play();
+}
+
+function playBackground() {
+    sound.play();
+    sound.loop = true;
+
+}
+
+function stopBackground() {
+
+    sound.pause();
+}
+
+function askForAnotherGame() {
+
+    if (confirm('Wanna play another Game?')) {
+        newGame();
+    } else {
+
+    }
+}
+
+function loadStatus() {
+    //show hints and gane number
+    let hintNumber = `${hintsCounter}/${maxHints}`;
+    document.getElementById('hintNumber').innerText = hintNumber;
+
+    document.getElementById('gameNumber').innerText = gameNumber;
+
 }
 
 function getHints() {
@@ -43,6 +95,10 @@ function getHints() {
     if (winnerFlag) {
         return
     }
+
+
+
+    loadStatus()
 
     //reset
     let bullcounter = 0
@@ -104,8 +160,17 @@ function getHints() {
         winner()
     }
 
+    if (hintsCounter >= maxHints && winnerFlag == 0) {
+        looser();
+        loadStatus();
+
+        return
+    }
+
     //reset inputs
     document.getElementById('input').value = ''
+    loadStatus();
+
 }
 
 function getRandomMotivationMessage() {
@@ -164,7 +229,7 @@ function addHintsImages(bullcounter, cowcounter, newestHint) {
     //print random funny image and random message
     if (bullcounter == 0 && cowcounter == 0) {
         var image = document.createElement('IMG')
-        let random = Math.ceil(Math.random() * 9)
+        let random = Math.ceil(Math.random() * 8)
         image.src = `src/images/funny/${random}.jpg`
         document.getElementById('funny-images').appendChild(image)
 
@@ -231,14 +296,19 @@ function showSettings() {
 
     //get the actual statuses from programm and show it
     document.getElementById('testFlag').value = testFlag
+    document.getElementById('sound').value = soundFlag
+    document.getElementById('max-hints').value = maxHints;
 }
 
 function saveSettings() {
 
     //save
     testFlag = document.getElementById('testFlag').value
-    document.getElementById('log').innerHTML = `testflag: ${testFlag} `
-
+    //document.getElementById('log').innerHTML = `testflag: ${testFlag} `;
+    soundFlag = document.getElementById("sound").value;
+    maxHints = document.getElementById("max-hints").value;
+    loadStatus();
+    //document.getElementById('log').innerHTML = `testflag: ${soundFlag} `;
     //hide start-section
     document.getElementById('start-section').style.display = 'none'
     document.getElementById('settings-section').style.display = 'none'
@@ -250,10 +320,38 @@ function saveSettings() {
     } else {
         document.getElementById('secret').innerHTML = ` ? ? ? ? `
     }
+    if (soundFlag == 1) {
+        playBackground();
+        document.body.style.background = "url('src/images/green.jpg') no-repeat right top";
+        console.log("playBackground");
+        console.log(soundFlag);
+    }
+    if (soundFlag == 0) {
+        stopBackground();
+        console.log("stopBackground");
+        document.body.style.background = "#e7e7e7";
+    }
+
+
 }
+
+function looser() {
+    document.getElementById(
+        'welcome',
+    ).innerHTML = `Looser! ${playerName} You are a looser !!!`
+
+    playCow();
+    document.body.style.background = "red";
+
+
+
+}
+
 
 function newGame() {
     //adde gamecounter
+    gameNumber++;
+    loadStatus();
 
     //lösche hints
     while (document.getElementById('images').firstChild) {
@@ -267,6 +365,27 @@ function newGame() {
     //reset input
     document.getElementById('input').value = ''
     winnerFlag = 0;
+
+    //delete hints on screen
+    document
+        .getElementById('hintNumber')
+        .removeChild(document.getElementById('hintNumber').lastChild)
+
+    //remove funny pic
+    if (document.getElementById('funny-images').lastChild) {
+        document
+            .getElementById('funny-images')
+            .removeChild(document.getElementById('funny-images').lastChild)
+    }
+    //remove error text
+    document
+        .getElementById('error').removeChild(document.getElementById('error').lastChild)
+    // 
+    //     //delete game on screen
+    //     document
+    //         .getElementById('gameNumber')
+    //         .removeChild(document.getElementById('gameNumber').lastChild)
+
 
     //start new
     startGame()
@@ -289,9 +408,16 @@ let motivationMessage = [
     'No cow and no bull. haha!',
 ]
 let winnerFlag = 0;
+let soundFlag = 0;
+let sound = new Audio('src/sounds/longer.wav');
+let audio = new Audio('src/sounds/mixkit-cow-moo-1744.wav');
+let maxHints = 10;
+let gameNumber = 1;
 
 
 //hide start-section
 document.getElementById('start-section').style.display = 'visible'
 document.getElementById('settings-section').style.display = 'none'
 document.getElementById('game-section').style.display = 'none'
+
+

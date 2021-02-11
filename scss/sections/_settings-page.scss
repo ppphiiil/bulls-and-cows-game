@@ -4,8 +4,16 @@
     align-content: center;
     align-items: center;
 
-    .form {
-        display: flex;
-        flex-direction: row;
+    // .form {
+    //     display: flex;
+    //     flex-direction: row;
+    // }
+}
+
+form{
+    gap: 20px;
+
+    div{
+        gap: 20px;
     }
 }

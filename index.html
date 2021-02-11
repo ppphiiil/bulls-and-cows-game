@@ -10,26 +10,35 @@
 </head>
 <body>
     <main>
-        <!-- ===================  -->
-        <!-- Start Section START  -->
-        <!-- ===================  -->
         <nav class="nav">
             <button class="button" onclick="newGame();">New Game</button>
+            <div class="gameStatus">
+                <p>Game:</p>
+                <p id="gameNumber"></p>
+            </div>
+            <div class="hintStatus">
+                <p>Hints:</p>
+                <p id="hintNumber"></p>
+            </div>
             <div>
                 <button class="button " onclick="showSettings();">Settings</button>
                 <button class="button ml-2">Stats</button>
                 <button class="button ml-2">Help</button>
             </div>
         </nav>
+        <!-- ===================  -->
+        <!-- Start Section START  -->
+        <!-- ===================  -->
         <section id="start-section">
             <h1>BULLS AND COWS</h1>
             <p class="paragraph">Hi! Welcome to my first Game in JavaScript. Do you know the game Bulls & Cows? No? Then
                 you haven't missed anything. It's awefull </p>
             <form action="">
-                <label for=" input">
-                    <p class="label-text">Enter your name:</p>
-                </label>
-                <input type="text" name="name" id="name">
+                <div> <label for=" input">
+                        <p class="label-text">Enter your name:</p>
+                    </label>
+                    <input type="text" name="name" id="name">
+                </div>
             </form>
             <button class="button ml-4 button-moving cta" type="text" onclick="startGame();">Start Game</button>
         </section>
@@ -81,12 +90,25 @@
         <section id="settings-section">
             <h1>Settings</h1>
             <form class="form" action="">
-                <label for="testFlag">
-                    <p class="label-text">Test mode</p>
-                </label>
-                <input type="text" name="testFlag" id="testFlag">
+                <div> <label for="testFlag">
+                        <p class="label-text">Test mode</p>
+                    </label>
+                    <input type="text" name="testFlag" id="testFlag">
+                </div>
+                <!--  -->
+                <div><label for="sound">
+                        <p class="label-text">More Feeling on/off</p>
+                    </label>
+                    <input type="text" name="sound" id="sound">
+                </div>
+                <!-- max-hints -->
+                <div><label for="sound">
+                        <p class="label-text">Max hints</p>
+                    </label>
+                    <input type="text" name="max-hints" id="max-hints">
+                </div>
             </form>
-            <button class="button cta mt-4" onclick="saveSettings();">Go back</button>
+            <button class="button cta button-moving mt-4" onclick="saveSettings();">save</button>
         </section>
         <p id="log"></p>
     </main>
