@@ -29,29 +29,31 @@ function unique(number) {
 }
 
 function winner() {
+
+    //winner message
     document.getElementById(
         'welcome',
     ).innerHTML = `Yea! ${playerName} you win this game !!!`
+
+    //background change
     document.getElementById('hints').style.color = '#ff0000'
+
+    //play sound
     playCow();
     confetti.start(10000)
+
+    //for no more hinting
     winnerFlag = 1;
+
+    //stop sound
     stopBackground();
 
-
+    //after 4sec ask to play more?
     setTimeout(function () {
         //code to be executed after x second
         askForAnotherGame();
         createNewGame();
     }, 4000);
-
-
-}
-
-
-
-
-function createNewGame() {
 
 
 }
@@ -74,6 +76,7 @@ function stopBackground() {
 
 function askForAnotherGame() {
 
+    //dialog
     if (confirm('Wanna play another Game?')) {
         newGame();
         console.log("yes");
@@ -83,7 +86,7 @@ function askForAnotherGame() {
 }
 
 function loadStatus() {
-    //show hints and gane number
+    //show hints and game number
     let hintNumber = `${hintsCounter}/${maxHints}`;
     document.getElementById('hintNumber').innerText = hintNumber;
 
@@ -176,8 +179,9 @@ function getHints() {
 }
 
 function getRandomMotivationMessage() {
+
     let random = Math.ceil(Math.random() * motivationMessage.length - 1)
-    console.log(random)
+
     document.getElementById('error').innerHTML = motivationMessage[random]
 }
 function addHints(newestHint) {
@@ -344,11 +348,7 @@ function looser() {
 
     playCow();
     document.body.style.background = "red";
-
-
-
 }
-
 
 function newGame() {
     //adde gamecounter
