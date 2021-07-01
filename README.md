@@ -1,5 +1,6 @@
 # Bulls and Cows
 
+![game](./Screen.png)
 In this project we will build a two player game that is called **Bulls and Cows**.
 
 ![cow icon](assets/cow.svg) ![bull icon](assets/bull.svg)
